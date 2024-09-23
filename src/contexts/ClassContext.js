@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import {
+	MAX_ATTRIBUTE_TOTAL,
 	DEFAULT_ATTRIBUTES,
 	CLASS_LIST,
 	SKILL_LIST,
@@ -24,7 +25,17 @@ export const ClassProvider = ({ children }) => {
 				return prevAttributes;
 			}
 
+			const currentTotal = Object.entries(prevAttributes)
+				.filter(([key]) => key !== attribute)
+				.reduce((acc, [, val]) => acc + val, 0);
+
 			const newValue = prevAttributes[attribute] + value;
+			const newTotal = currentTotal + newValue;
+
+			if (newTotal > MAX_ATTRIBUTE_TOTAL && newValue > prevAttributes[attribute]) {
+				alert(`Total attributes cannot exceed ${MAX_ATTRIBUTE_TOTAL}.`);
+				return prevAttributes;
+			}
 			return {
 				...prevAttributes,
 				[attribute]: Math.max(newValue, 0),

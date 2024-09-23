@@ -2,7 +2,10 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import AttributeList from "./AttributeList";
 import { ClassProvider } from "../../contexts/ClassContext.js";
-import { DEFAULT_ATTRIBUTES } from "../../constants/consts.js";
+import {
+	DEFAULT_ATTRIBUTES,
+	MAX_ATTRIBUTE_TOTAL,
+} from "../../constants/consts.js";
 
 test("Renders all of the attributes with correct values", () => {
 	render(
@@ -54,4 +57,29 @@ test("Prevents Strength from going below 0 when - button is clicked", () => {
 	expect(screen.getByTestId("attribute-Strength")).toHaveTextContent(
 		"Strength: 0 (Modifier: -5)" // Modifier for 0 is -5
 	);
+});
+
+test("Ensure attribute can't exceed specified limit", () => {
+	render(
+		<ClassProvider>
+			<AttributeList />
+		</ClassProvider>
+	);
+
+	jest.spyOn(window, "alert").mockImplementation(() => {});
+
+	// Calculate the number of remaining points to be allocated by summing all attributes and subtracting
+	// from MAX_ATTRIBUTE_TOTAL
+	const remainingPoints =
+		MAX_ATTRIBUTE_TOTAL -
+		Object.values(DEFAULT_ATTRIBUTES).reduce((acc, val) => acc + val, 0);
+
+	for (let i = 0; i < remainingPoints + 1; i++) {
+		fireEvent.click(screen.getByTestId("increment-Strength"));
+	}
+
+	expect(window.alert).toHaveBeenCalledWith(
+		`Total attributes cannot exceed ${MAX_ATTRIBUTE_TOTAL}.`
+	);
+	window.alert.mockRestore();
 });

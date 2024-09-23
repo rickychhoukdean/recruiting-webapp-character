@@ -1,3 +1,5 @@
+export const MAX_ATTRIBUTE_TOTAL = 70;
+
 export const DEFAULT_ATTRIBUTES = {
 	Strength: 14,
 	Dexterity: 10,
