@@ -1,25 +1,23 @@
-import { useState } from 'react';
-import './App.css';
-import { ATTRIBUTE_LIST, CLASS_LIST, SKILL_LIST } from './consts.js';
-
+import "./App.css";
+import AttributeList from "./components/AttributeList/AttributeList.js";
+import { ClassProvider } from "./contexts/ClassContext.js";
 
 function App() {
-  const [num, setNum] = useState(0);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Coding Exercise</h1>
-      </header>
-      <section className="App-section">
-        <div>
-          Value:
-          {num}
-          <button>+</button>
-          <button>-</button>
-        </div>
-      </section>
-    </div>
-  );
+	return (
+		<ClassProvider>
+			<div className="App">
+				<header className="App-header">
+					<h1>Character Builder</h1>
+				</header>
+				<main>
+					<section>
+						<h2>Character Attributes</h2>
+						<AttributeList />
+					</section>
+				</main>
+			</div>
+		</ClassProvider>
+	);
 }
 
 export default App;
