@@ -1,0 +1,7 @@
+.class-list__button--available {
+	color: green;
+}
+
+.class-list__button--unavailable {
+	color: red;
+}

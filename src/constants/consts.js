@@ -1,5 +1,5 @@
 export const DEFAULT_ATTRIBUTES = {
-	Strength: 10,
+	Strength: 14,
 	Dexterity: 10,
 	Constitution: 10,
 	Intelligence: 10,

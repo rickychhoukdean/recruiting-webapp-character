@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { DEFAULT_ATTRIBUTES } from "../constants/consts";
+import { DEFAULT_ATTRIBUTES, CLASS_LIST } from "../constants/consts";
 export const ClassContext = createContext();
 
 export const ClassProvider = ({ children }) => {
@@ -25,6 +25,7 @@ export const ClassProvider = ({ children }) => {
 			value={{
 				attributes,
 				updateAttribute,
+				classList: CLASS_LIST,
 			}}
 		>
 			{children}

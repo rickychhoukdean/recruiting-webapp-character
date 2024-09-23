@@ -44,7 +44,7 @@ test("Prevents Strength from going below 0 when - button is clicked", () => {
 	);
 
 	// Click the decrement button more than the default to ensure it doesn't go below 0
-	for (let i = 0; i < 12; i++) {
+	for (let i = 0; i < 15; i++) {
 		fireEvent.click(screen.getByTestId("decrement-Strength"));
 	}
 
