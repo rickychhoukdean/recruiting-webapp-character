@@ -3,7 +3,7 @@ import { ClassContext } from "../../contexts/ClassContext";
 import "./ClassList.css";
 
 const ClassList = () => {
-	const { classList, attributes } = useContext(ClassContext);
+	const { classList, attributes, selectClass } = useContext(ClassContext);
 
 	const canMeetRequirements = (className) => {
 		const classRequirements = classList[className];
@@ -28,6 +28,7 @@ const ClassList = () => {
 								? "class-list__button class-list__button--available"
 								: "class-list__button class-list__button--unavailable"
 						}
+						onClick={() => selectClass(className)}
 					>
 						{className}
 					</button>

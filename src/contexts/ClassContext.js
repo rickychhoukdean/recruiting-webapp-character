@@ -4,6 +4,7 @@ export const ClassContext = createContext();
 
 export const ClassProvider = ({ children }) => {
 	const [attributes, setAttributes] = useState(DEFAULT_ATTRIBUTES);
+	const [selectedClass, setSelectedClass] = useState(null);
 
 	const updateAttribute = (attribute, value) => {
 		setAttributes((prevAttributes) => {
@@ -20,12 +21,18 @@ export const ClassProvider = ({ children }) => {
 		});
 	};
 
+	const selectClass = (className) => {
+		setSelectedClass(className);
+	};
+
 	return (
 		<ClassContext.Provider
 			value={{
 				attributes,
 				updateAttribute,
 				classList: CLASS_LIST,
+				selectedClass,
+				selectClass,
 			}}
 		>
 			{children}

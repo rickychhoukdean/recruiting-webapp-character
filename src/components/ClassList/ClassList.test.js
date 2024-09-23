@@ -1,7 +1,7 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import React, { useContext } from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import ClassList from "./ClassList";
-import { ClassProvider } from "../../contexts/ClassContext.js";
+import { ClassProvider, ClassContext } from "../../contexts/ClassContext.js";
 import { CLASS_LIST } from "../../constants/consts";
 
 test("renders class list and applies correct color for selected class", () => {
@@ -23,4 +23,28 @@ test("renders class list and applies correct color for selected class", () => {
 	otherClassButtons.forEach((button) => {
 		expect(button).toHaveClass("class-list__button--unavailable");
 	});
+});
+
+const TestComponent = () => {
+	const { selectedClass } = useContext(ClassContext);
+	return <div data-testid="selected-class">{selectedClass}</div>;
+};
+
+test("updates selectedClass correctly when a class is clicked", () => {
+	render(
+		<ClassProvider>
+			<ClassList />
+			<TestComponent />
+		</ClassProvider>
+	);
+
+	// Ensure initially no class is selected
+	expect(screen.getByTestId("selected-class")).toHaveTextContent("");
+
+	// Click on the Wizard class button
+	const wizardButton = screen.getByTestId("class-button-Wizard");
+	fireEvent.click(wizardButton);
+
+	// Ensure selectedClass is updated to "Wizard"
+	expect(screen.getByTestId("selected-class")).toHaveTextContent("Wizard");
 });
