@@ -1,0 +1,27 @@
+.skill-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.skill-item__info {
+	flex-grow: 1;
+}
+
+.skill-item__controls {
+	display: flex;
+	gap: 5px;
+}
+
+.skill-item__controls button {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.skill-total {
+	margin-bottom: 10px;
+}

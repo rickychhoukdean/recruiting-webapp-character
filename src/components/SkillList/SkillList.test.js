@@ -32,13 +32,13 @@ test("renders skill list with correct initial values and total values", () => {
 		</MockClassProvider>
 	);
 
-	expect(getSkillPoints("Acrobatics")).toHaveTextContent("Acrobatics level: 3");
+	expect(getSkillPoints("Acrobatics")).toHaveTextContent("level 3");
 	// Check the total value of Acrobatics (points 3 + Dexterity modifier 2 = 5)
 	expect(getTotalValue("Acrobatics")).toHaveTextContent("Total: 5");
 
-	expect(getSkillPoints("Stealth")).toHaveTextContent("Stealth level: 0");
+	expect(getSkillPoints("Stealth")).toHaveTextContent("level 0");
 	expect(getTotalValue("Stealth")).toHaveTextContent("Total: 2");
 
-	expect(getSkillPoints("Arcana")).toHaveTextContent("Arcana level: 0");
+	expect(getSkillPoints("Arcana")).toHaveTextContent("level 0");
 	expect(getTotalValue("Arcana")).toHaveTextContent("Total: 1");
 });

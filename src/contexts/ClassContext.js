@@ -32,7 +32,10 @@ export const ClassProvider = ({ children }) => {
 			const newValue = prevAttributes[attribute] + value;
 			const newTotal = currentTotal + newValue;
 
-			if (newTotal > MAX_ATTRIBUTE_TOTAL && newValue > prevAttributes[attribute]) {
+			if (
+				newTotal > MAX_ATTRIBUTE_TOTAL &&
+				newValue > prevAttributes[attribute]
+			) {
 				alert(`Total attributes cannot exceed ${MAX_ATTRIBUTE_TOTAL}.`);
 				return prevAttributes;
 			}
@@ -45,6 +48,10 @@ export const ClassProvider = ({ children }) => {
 
 	const selectClass = (className) => {
 		setSelectedClass(className);
+	};
+
+	const clearSelectedClass = () => {
+		setSelectedClass(null);
 	};
 
 	const updateSkillPoints = (skill, value) => {
@@ -65,9 +72,10 @@ export const ClassProvider = ({ children }) => {
 				selectedClass,
 				skillPoints,
 				selectClass,
+				clearSelectedClass,
+				setAttributes,
 				updateAttribute,
 				updateSkillPoints,
-				setAttributes,
 				setSkillPoints,
 			}}
 		>

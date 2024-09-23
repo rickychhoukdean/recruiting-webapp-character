@@ -1,0 +1,24 @@
+.attribute-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.attribute-item__details {
+	flex-grow: 1;
+}
+
+.attribute-item__controls {
+	display: flex;
+	gap: 5px;
+}
+
+.attribute-item__controls button {
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.attribute-total {
+	margin-bottom: 10px;
+}

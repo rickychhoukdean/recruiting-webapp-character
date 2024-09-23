@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ClassContext } from "../../contexts/ClassContext";
 import { calculateModifier } from "../../helpers/helpers";
-
+import "./SkillList.css";
 const SkillList = () => {
 	const { attributes, skillList, skillPoints, updateSkillPoints } =
 		useContext(ClassContext);
@@ -28,8 +28,12 @@ const SkillList = () => {
 
 	return (
 		<div>
-			<h3>Total skill points available: {maxSkillPoints - totalPointsSpent}</h3>
-			<ul>
+			<div className="skill-total">
+				<strong>
+					Total skill points available: {maxSkillPoints - totalPointsSpent}
+				</strong>
+			</div>
+			<div>
 				{skillList.map(({ name, attributeModifier }) => {
 					const modifierValue = calculateModifier(
 						attributes[attributeModifier]
@@ -37,42 +41,40 @@ const SkillList = () => {
 					const totalValue = skillPoints[name] + modifierValue;
 
 					return (
-						<ul
-							style={{
-								padding: "10px",
-								marginBottom: "10px",
-								border: "1px solid black",
-							}}
-							key={name}
-						>
-							<div
-								data-testid={`skill-points-${name}`}
-								className="skill-points"
-							>
-								{name} level: {skillPoints[name] || 0}
+						<div className="skill-item" key={name}>
+							<div className="skill-item__info">
+								<span
+									data-testid={`skill-points-${name}`}
+									className="skill-points"
+								>
+									<strong>{name}</strong> level {skillPoints[name] || 0} |{" "}
+								</span>
+								<span>
+									Modifier <em>({attributeModifier}): </em>
+									{modifierValue} |{" "}
+								</span>
+								<span data-testid={`total-${name}`} className="skill-total">
+									<strong>Total: {totalValue} </strong>
+								</span>
 							</div>
-							<div>
-								Modifier ({attributeModifier}): {modifierValue}
+							<div className="skill-item__controls">
+								<button
+									onClick={() => incrementSkill(name)}
+									data-testid={`increment-${name}`}
+								>
+									+
+								</button>
+								<button
+									onClick={() => decrementSkill(name)}
+									data-testid={`decrement-${name}`}
+								>
+									-
+								</button>
 							</div>
-							<div data-testid={`total-${name}`} className="skill-total">
-								Total: {totalValue}
-							</div>
-							<button
-								onClick={() => incrementSkill(name)}
-								data-testid={`increment-${name}`}
-							>
-								+
-							</button>
-							<button
-								onClick={() => decrementSkill(name)}
-								data-testid={`decrement-${name}`}
-							>
-								-
-							</button>
-						</ul>
+						</div>
 					);
 				})}
-			</ul>
+			</div>
 		</div>
 	);
 };

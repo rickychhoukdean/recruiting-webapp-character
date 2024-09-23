@@ -5,3 +5,8 @@
 .class-list__button--unavailable {
 	color: red;
 }
+
+.class-list {
+	display: flex;
+	gap: 5px;
+}

@@ -10,26 +10,27 @@ import LoadButton from "./components/LoadButton/LoadButton.js";
 function App() {
 	return (
 		<ClassProvider>
-			<div className="App">
-				<header className="App-header">
+			<div className="character-builder">
+				<header className="character-builder__header">
 					<h1>Character Builder</h1>
 				</header>
-				<main>
-					<section>
-						<h2>Character Attributes</h2>
+				<section className="character-builder__actions">
+					<SaveButton />
+					<LoadButton />
+				</section>
+				<main className="character-builder__content">
+					<section className="character-builder-section">
+						<h2>Attributes</h2>
 						<AttributeList />
 					</section>
-					<section>
-						<h2>Class List</h2>
+					<section className="character-builder-section">
+						<h2>Classes</h2>
 						<ClassList />
 						<MinimumClassRequirements />
 					</section>
-					<section>
+					<section className="character-builder-section">
+						<h2>Skills</h2>
 						<SkillList />
-					</section>
-					<section>
-						<SaveButton />
-						<LoadButton />
 					</section>
 				</main>
 			</div>
