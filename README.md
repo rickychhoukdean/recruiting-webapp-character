@@ -1,13 +1,17 @@
 # recruiting-webapp-character
 React coding test
 
-# Create a repository from this template
-- Click on `Use this template` dropdown on this repo page.
-- select `Create a new repository`
-- Under Owner, use your personal account and **NOT** `policyme-recruiting`
-- Write a name of the repo as `recruiting-webapp-character`
-- Select `Public` as visibility
-- Click `Create repository`
+
+# Screen recording of the assignment
+https://www.loom.com/share/4cedaf255431494dbe26898adcc6ed2a?sid=cfef2612-f9c4-4d70-bc54-612bed3e9685
+
+# Extra information about the take home and some choices made
+1. The assessment was done with test driven development in mind so you will notice each component has an associated test file. Please run `npm test` to see the tests run. 
+2. It took more time doing it this way than expected because of setting it up and mocking so I could only get up to step 8. 
+3. Ideally would have tested the helper functions throughout and the ClassContext with more time.
+4. Chose to use react context over redux / passing around props because I wanted to have a centralized state management system without all of the overhead of redux.
+5. In a perfect world would have ensured it was accessibility compliant as well as having all components follow BEM methodology.
+
 
 # Run the application
 - Clone the newly created repo locally
