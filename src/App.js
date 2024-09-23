@@ -4,6 +4,8 @@ import ClassList from "./components/ClassList/ClassList.js";
 import { ClassProvider } from "./contexts/ClassContext.js";
 import MinimumClassRequirements from "./components/MinimumClassRequirements/MinimumClassRequirements.js";
 import SkillList from "./components/SkillList/SkillList.js";
+import SaveButton from "./components/SaveButton/SaveButton.js";
+import LoadButton from "./components/LoadButton/LoadButton.js";
 
 function App() {
 	return (
@@ -24,6 +26,10 @@ function App() {
 					</section>
 					<section>
 						<SkillList />
+					</section>
+					<section>
+						<SaveButton />
+						<LoadButton />
 					</section>
 				</main>
 			</div>

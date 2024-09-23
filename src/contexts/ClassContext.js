@@ -60,13 +60,15 @@ export const ClassProvider = ({ children }) => {
 		<ClassContext.Provider
 			value={{
 				attributes,
-				updateAttribute,
 				classList: CLASS_LIST,
 				skillList: SKILL_LIST,
 				selectedClass,
-				selectClass,
 				skillPoints,
+				selectClass,
+				updateAttribute,
 				updateSkillPoints,
+				setAttributes,
+				setSkillPoints,
 			}}
 		>
 			{children}
