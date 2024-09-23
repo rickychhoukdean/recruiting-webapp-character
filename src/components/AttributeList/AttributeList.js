@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { ClassContext } from "../../contexts/ClassContext.js";
-
-const calculateModifier = (attributeValue) => {
-	return Math.floor((attributeValue - 10) / 2);
-};
+import { calculateModifier } from "../../helpers/helpers.js";
 
 const AttributeList = () => {
 	const { attributes, updateAttribute } = useContext(ClassContext);

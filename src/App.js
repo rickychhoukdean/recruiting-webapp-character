@@ -3,6 +3,7 @@ import AttributeList from "./components/AttributeList/AttributeList.js";
 import ClassList from "./components/ClassList/ClassList.js";
 import { ClassProvider } from "./contexts/ClassContext.js";
 import MinimumClassRequirements from "./components/MinimumClassRequirements/MinimumClassRequirements.js";
+import SkillList from "./components/SkillList/SkillList.js";
 
 function App() {
 	return (
@@ -20,6 +21,9 @@ function App() {
 						<h2>Class List</h2>
 						<ClassList />
 						<MinimumClassRequirements />
+					</section>
+					<section>
+						<SkillList />
 					</section>
 				</main>
 			</div>

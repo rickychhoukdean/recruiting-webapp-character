@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import MinimumClassRequirements from "./MinimumClassRequirements";
-import { ClassContext } from "../../contexts/ClassContext";
 import { CLASS_LIST } from "../../constants/consts";
-
+import { MockClassProvider } from "../../helpers/helpers";
 const mockSelectedClassContext = {
 	selectedClass: "Barbarian",
 	classList: CLASS_LIST,
@@ -18,9 +17,9 @@ const mockSelectedClassContext = {
 
 test("renders minimum class requirements for selected class", () => {
 	render(
-		<ClassContext.Provider value={mockSelectedClassContext}>
+		<MockClassProvider mockContext={mockSelectedClassContext}>
 			<MinimumClassRequirements />
-		</ClassContext.Provider>
+		</MockClassProvider>
 	);
 
 	const selectedClass = mockSelectedClassContext.selectedClass;
