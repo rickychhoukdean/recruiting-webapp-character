@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { ClassContext } from "../../contexts/ClassContext.js";
 
+const calculateModifier = (attributeValue) => {
+	return Math.floor((attributeValue - 10) / 2);
+};
+
 const AttributeList = () => {
 	const { attributes, updateAttribute } = useContext(ClassContext);
 	return (
@@ -8,7 +12,9 @@ const AttributeList = () => {
 			{Object.entries(attributes).map(([attribute, value]) => {
 				return (
 					<ul key={attribute}>
-						{attribute}: {value}
+						<span data-testid={`attribute-${attribute}`}>
+							{attribute}: {value} (Modifier: {calculateModifier(value)})
+						</span>
 						<button
 							data-testid={`increment-${attribute}`}
 							onClick={() => updateAttribute(attribute, 1)}

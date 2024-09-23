@@ -12,7 +12,10 @@ test("Renders all of the attributes with correct values", () => {
 	);
 
 	Object.entries(DEFAULT_ATTRIBUTES).forEach(([attribute, value]) => {
-		expect(screen.getByText(`${attribute}: ${value}`)).toBeInTheDocument();
+		const modifier = Math.floor((value - 10) / 2); // Calculate the modifier
+		expect(screen.getByTestId(`attribute-${attribute}`)).toHaveTextContent(
+			`${attribute}: ${value} (Modifier: ${modifier})`
+		);
 	});
 });
 
@@ -23,17 +26,16 @@ test("Ensure attributes get incremented correctly without affecting others", () 
 		</ClassProvider>
 	);
 
-	// Check to see if strength is incremented correctly
 	fireEvent.click(screen.getByTestId("increment-Strength"));
 
-	expect(
-		screen.getByText(`Strength: ${DEFAULT_ATTRIBUTES.Strength + 1}`)
-	).toBeInTheDocument();
+	expect(screen.getByTestId("attribute-Strength")).toHaveTextContent(
+		`Strength: ${DEFAULT_ATTRIBUTES.Strength + 1}`
+	);
 
 	// Ensure other attributes are not affected
-	expect(
-		screen.getByText(`Charisma: ${DEFAULT_ATTRIBUTES.Charisma}`)
-	).toBeInTheDocument();
+	expect(screen.getByTestId("attribute-Charisma")).toHaveTextContent(
+		`Charisma: ${DEFAULT_ATTRIBUTES.Charisma}`
+	);
 });
 
 test("Prevents Strength from going below 0 when - button is clicked", () => {
@@ -48,5 +50,8 @@ test("Prevents Strength from going below 0 when - button is clicked", () => {
 		fireEvent.click(screen.getByTestId("decrement-Strength"));
 	}
 
-	expect(screen.getByText("Strength: 0")).toBeInTheDocument();
+	// Ensure Strength doesn't go below 0
+	expect(screen.getByTestId("attribute-Strength")).toHaveTextContent(
+		"Strength: 0 (Modifier: -5)" // Modifier for 0 is -5
+	);
 });
